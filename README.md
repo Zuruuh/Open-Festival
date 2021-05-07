@@ -2,7 +2,7 @@
 
 ## Analysez les besoins de votre client pour son festival de films
 
-## Jennifer Edwards est l'organisatrice du festival des Films de Plein Air. Elle ambitionne de sélectionner et de projeter des films d'auteur en plein air du 5 au 8 août au parc Monceau à Paris
+Jennifer Edwards est l'organisatrice du festival des Films de Plein Air. Elle ambitionne de sélectionner et de projeter des films d'auteur en plein air du 5 au 8 août au parc Monceau à Paris
 
 Les projections de films en plein air reviennent à la mode !
 Les projections de films en plein air reviennent à la mode !
