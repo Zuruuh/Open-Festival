@@ -38,3 +38,10 @@ La soutenance se déroule comme suit :
 * Un moment questions-réponses : 10 minutes
 * Votre évaluateur reprendra son rôle de mentor à la fin de votre "rendez-vous avec le client" pour débriefer avec vous pendant 5 minutes
   
+## Compétences évaluées
+
+* Choisir une solution technique adaptée parmi les solutions existantes si cela est pertinent
+* Analyser un cahier des charges
+* Lister les fonctionnalités demandées par un client
+* Rédiger les spécifications détaillées du projet
+  
