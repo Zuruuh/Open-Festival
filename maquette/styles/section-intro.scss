@@ -1,0 +1,39 @@
+section#Intro{
+    height: 90vh;
+    background: darken(#1B262C, 5%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    & *{
+        margin: 30px;
+    }
+    & h2{
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+    }
+    & p{
+        width: 600px;
+        text-align: center;
+        font-size: 2em;
+        font-weight: 500;
+        color:#BBE1FA;
+    }
+    & a{
+        background: darken(#74C1F5, 10%);
+        text-decoration: none;
+        color: #e5e5e5;
+        padding: 10px 30px;
+        font-size: 2em;
+        margin-top: 25px;
+        border-radius: 45px;
+        transition: all 0.2s linear;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover{
+        background: #e5e5e5;color: darken(#74C1F5, 10%);
+        border: 1px solid #111;   
+        }
+    }
+}

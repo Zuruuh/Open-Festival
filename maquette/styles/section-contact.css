@@ -1,0 +1,169 @@
+#Contact {
+  height: 0;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  margin-top: -100px;
+}
+
+section#ContactSection {
+  height: 90vh;
+  width: 100%;
+  background: #11181C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section#ContactSection h2 {
+  width: 100%;
+  text-align: center;
+}
+
+section#ContactSection .formContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section#ContactSection .formContainer img {
+  width: 450px;
+  height: 95%;
+}
+
+section#ContactSection .formContainer .contactForm {
+  background: #74C1F5;
+  height: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 700px;
+}
+
+section#ContactSection .formContainer .contactForm h3 {
+  margin-bottom: 20px;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox label {
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  outline: 0;
+  color: #111;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input:-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input[type="submit"] {
+  position: relative;
+  left: 50%;
+  bottom: 10px;
+  width: auto;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 2em;
+  border: 1px solid transparent;
+  color: #74C1F5;
+  background: #e5e5e5;
+  padding: 10px 40px;
+  border-radius: 35px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input[type="submit"]:hover {
+  background: #fff;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input[type="submit"]:active {
+  -webkit-transform: translateX(-50%) scale(0.98);
+          transform: translateX(-50%) scale(0.98);
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea {
+  resize: none;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  height: 200px;
+  outline: 0;
+  color: #111;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea:-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea::-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea::placeholder {
+  font-weight: 400;
+}
+/*# sourceMappingURL=section-contact.css.map */

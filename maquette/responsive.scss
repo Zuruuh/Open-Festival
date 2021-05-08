@@ -1,0 +1,152 @@
+@media screen and (max-width: 1200px){
+    .formContainer .contactForm
+    {
+        width: 500px  ;
+    }
+    .formContainer .formBox{
+        width: 500px  ;
+        & div{
+            & label{
+                font-size: 1.1em  ;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1160px){
+    nav ul li a{
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 1002px){
+    nav ul li{
+        display: none;
+        &.toggle{
+            display: inline-block;
+            color: #bbe1fa;
+            font-size: 2em;
+            cursor: pointer;
+            border: 1px solid #bbe1fa;
+            padding :5px 15px;
+            border-radius: 10px;
+        }
+    }
+    section#MoviesSection{
+        height: auto;
+        & .movies-container{
+            flex-direction: column  ;
+        }
+    }
+}
+
+@media screen and (max-height: 850px){
+    article{
+        height: 150px  ;
+        & p{
+            font-size: 0.8em;
+        }
+    }
+}
+@media screen and (max-width: 800px){
+    header#Page-Header{
+        height: 70vh  ;
+        & h1{
+            font-size: 4em  ;
+        }
+        & h2{
+            font-size: 1.3em  ;
+        }
+    }
+    header.MoviesHeader{
+        align-items: flex-start  ;
+        margin-bottom: 100px  ;
+        position: relative  ;
+        justify-content: flex-start  ;
+        & h2{
+            width: 100vw  ;
+        }
+        & button{
+            position: absolute  ;
+            top: 100%  ;
+            margin: 0  ;
+            border-color: darken(#74C1F5, 10%)  ;
+            width: 50%;
+            background-color: darken(#74C1F5, 10%)  ;
+            border-radius: 0  ;
+            border-top: 1px solid #111  ;
+            &:hover{
+                background-color: darken(#74C1F5, 15%)  ;
+            }
+            &.movies-carousel-left{
+                left:0  ;
+                border-right: 1px solid #111  ;
+            }
+            &.movies-carousel-right{
+                right: 0  ;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    header#MoviesHeader{
+        & h2{
+            font-size: 1em  ;   
+        }
+    }
+
+}
+
+@media screen and (max-width: 536px){
+    header#Page-Header{
+        height: 60vh  ;
+        & h1{
+            font-size: 3em ;
+        }
+        & h2{
+            font-size: 1em  ;
+        }
+    }
+}
+
+@media screen and (max-width: 350px){
+    header#Page-Header{
+        & h1{
+            font-size: 2.5em ;
+        }
+        & h2{
+            font-size: 0.9em  ;
+        }
+        & a{
+            font-size: 1.5em  ;
+        }
+    }
+    section#MoviesSection{
+        & .movies-container{
+            & .movie{
+                height: 500px;
+                width: 100%;
+                & .thumbnail{
+                    width: 95%;
+                }
+            }
+        }
+    }
+}
+
+@media  screen and(max-width: 300px){
+    header#Page-Header{
+        & h1{
+            font-size: 2em  ;
+        }
+        & h2{
+            font-size: 0.7em  ;
+        }
+        & a{
+            font-size: 1.2em  ;
+        }
+    }
+}

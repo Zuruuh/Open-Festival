@@ -1,0 +1,56 @@
+section#Intro {
+  height: 90vh;
+  background: #11181c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#Intro * {
+  margin: 30px;
+}
+
+section#Intro h2 {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+section#Intro p {
+  width: 600px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 500;
+  color: #BBE1FA;
+}
+
+section#Intro a {
+  background: #44acf2;
+  text-decoration: none;
+  color: #e5e5e5;
+  padding: 10px 30px;
+  font-size: 2em;
+  margin-top: 25px;
+  border-radius: 45px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+section#Intro a:hover {
+  background: #e5e5e5;
+  color: #44acf2;
+  border: 1px solid #111;
+}
+/*# sourceMappingURL=section-intro.css.map */

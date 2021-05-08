@@ -1,0 +1,232 @@
+
+@media screen and (max-width: 1200px){
+    header#Page-Header{
+        & h1{
+            font-size: 5em;
+        }
+    }
+    .formContainer .contactForm
+    {
+        width: 500px ;
+    }
+    .formContainer .formBox{
+        width: 500px ;
+        & div{
+            & label{
+                font-size: 1.1em ;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1160px){
+    nav ul li a{
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 1002px){
+    nav ul li{
+        display: none;
+        &.toggle{
+            display: inline-block;
+            color: #bbe1fa;
+            font-size: 2em;
+            cursor: pointer;
+            border: 1px solid #bbe1fa;
+            padding :5px 15px;
+            border-radius: 10px;
+        }
+    }
+    section#MoviesSection{
+        height: auto;
+        & .movies-container{
+            flex-direction: column ;
+        }
+    }
+}
+
+@media screen and (max-width: 850px){
+
+    .article{
+        width: 80% !important;
+        height: auto !important;
+        & p{
+            font-size: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: 800px){
+    header#Page-Header{
+        height: 70vh ;
+        & h1{
+            font-size: 4em ;
+        }
+        & h2{
+            font-size: 1.3em ;
+        }
+    }
+    header.MoviesHeader{
+        align-items: flex-start ;
+        margin-bottom: 100px ;
+        position: relative ;
+        justify-content: flex-start ;
+        & h2{
+            width: 100vw ;
+        }
+        & button{
+            position: absolute ;
+            top: 100% ;
+            margin: 0 ;
+            border-color: darken(#74C1F5, 10%) ;
+            width: 50%;
+            background-color: darken(#74C1F5, 10%) ;
+            border-radius: 0 ;
+            border-top: 1px solid #111 ;
+            &:hover{
+                background-color: darken(#74C1F5, 15%) ;
+            }
+            &.movies-carousel-left{
+                left:0  ;
+                border-right: 1px solid #111  ;
+            }
+            &.movies-carousel-right{
+                right: 0  ;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px){
+    section#Intro{
+        height: auto;
+        padding: 20px 0 !important;
+        & p{
+            width: 80% !important;
+            font-size: 1.2em !important;
+        }
+        & a{
+            margin: 0 !important;
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    header#MoviesHeader{
+        & h2{
+            font-size: 1em  ;   
+        }
+    }
+
+}
+
+@media screen and (max-width: 536px){
+    .section-title{
+        font-size: 2em !important;
+        margin: 0 !important;
+    }
+    header#Page-Header{
+        height: 60vh  ;
+        & h1{
+            font-size: 3em ;
+        }
+        & h2{
+            font-size: 1em  ;
+        }
+    }
+    section#NewsSection{
+        height: auto !important;
+    }
+
+    section#Intro{
+        & a{
+            font-size: 1.3em;
+        }
+    }
+}
+
+@media screen and (max-width: 360px){
+
+    header#Page-Header{
+        & h1{
+            font-size: 2.5em;
+        }
+        & h2{
+            font-size: 0.9em ;
+        }
+        & a{
+            font-size: 1.5em ;
+        }
+    }
+
+    section#Intro{
+        & h2{
+            font-size: 1.4em !important;
+        }
+    }
+
+    .article .article-info{
+        display: none !important;
+    }
+
+    section#MoviesSection{
+        & .movies-container{
+            & .movie{
+                height: 500px;
+                width: 100%;
+                & .thumbnail{
+                    width: 95%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and(max-width: 300px){
+    header#Page-Header{
+        height: auto !important;
+        padding: 100px 0 !important;
+        & h1{
+            font-size: 2em !important;
+        }
+        & h2{
+            font-size: 0.7em !important;
+        }
+        & a{
+            font-size: 1.5em !important;
+        }
+    }
+    .article{
+        & h3{
+            font-size: 1em !important;
+        }
+    }
+    section#Intro{
+        & a{
+            font-size: 1em !important;
+        }
+    }
+}
+
+@media screen and(max-width: 240px){
+    header#Page-Header{
+        & a{
+            font-size: 1em !important;
+        }
+    }
+    nav{
+        justify-content: center !important;
+        & a{
+            display: none !important;
+        }
+        & ul li.toggle{
+            width: 90vw !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

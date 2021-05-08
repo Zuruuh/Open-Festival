@@ -1,0 +1,145 @@
+@media screen and (max-width: 1200px) {
+  .formContainer .contactForm {
+    width: 500px;
+  }
+  .formContainer .formBox {
+    width: 500px;
+  }
+  .formContainer .formBox div label {
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  nav ul li a {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 1002px) {
+  nav ul li {
+    display: none;
+  }
+  nav ul li.toggle {
+    display: inline-block;
+    color: #bbe1fa;
+    font-size: 2em;
+    cursor: pointer;
+    border: 1px solid #bbe1fa;
+    padding: 5px 15px;
+    border-radius: 10px;
+  }
+  section#MoviesSection {
+    height: auto;
+  }
+  section#MoviesSection .movies-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-height: 850px) {
+  article {
+    height: 150px;
+  }
+  article p {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  header#Page-Header {
+    height: 70vh;
+  }
+  header#Page-Header h1 {
+    font-size: 4em;
+  }
+  header#Page-Header h2 {
+    font-size: 1.3em;
+  }
+  header.MoviesHeader {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 100px;
+    position: relative;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  header.MoviesHeader h2 {
+    width: 100vw;
+  }
+  header.MoviesHeader button {
+    position: absolute;
+    top: 100%;
+    margin: 0;
+    border-color: #44acf2;
+    width: 50%;
+    background-color: #44acf2;
+    border-radius: 0;
+    border-top: 1px solid #111;
+  }
+  header.MoviesHeader button:hover {
+    background-color: #2da1f0;
+  }
+  header.MoviesHeader button.movies-carousel-left {
+    left: 0;
+    border-right: 1px solid #111;
+  }
+  header.MoviesHeader button.movies-carousel-right {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header#MoviesHeader h2 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 536px) {
+  header#Page-Header {
+    height: 60vh;
+  }
+  header#Page-Header h1 {
+    font-size: 3em;
+  }
+  header#Page-Header h2 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  header#Page-Header h1 {
+    font-size: 2.5em;
+  }
+  header#Page-Header h2 {
+    font-size: 0.9em;
+  }
+  header#Page-Header a {
+    font-size: 1.5em;
+  }
+  section#MoviesSection .movies-container .movie {
+    height: 500px;
+    width: 100%;
+  }
+  section#MoviesSection .movies-container .movie .thumbnail {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  header#Page-Header h1 {
+    font-size: 2em;
+  }
+  header#Page-Header h2 {
+    font-size: 0.7em;
+  }
+  header#Page-Header a {
+    font-size: 1.2em;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
