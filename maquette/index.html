@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Festival de Films de Plein Air</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </head>
-<body onscroll="navUpdate(window.pageYOffset)">
+<body onscroll="navUpdate(window.pageYOffset)" class="scroll-lock">
     <div id="Home"></div>
     <nav>
-        <a href="/" class="nav-logo">Logo</a>
+        <a href="#" class="nav-logo">Logo</a>
 
         <ul>
             <li><a href="#Home" class="nav-link active">Accueil</a></li>
@@ -40,7 +41,7 @@
     <div id="News"></div>
     <section id="NewsSection">
         <h2 class="section-title"> Nos Actualités </h2>
-        <article>
+        <article class="article">
             <div class="article-info">
                 <div class="article-author"><i class="fas fa-user"></i> Administrateur</div>
                 <div class="article-date">
@@ -51,7 +52,7 @@
             <h3>Le festival se déroulera du 5 au 8 Août !</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quasi sed iste magnam quos ducimus unde perferendis ullam, consequatur sit voluptatibus eum placeat similique ad fugit in consequuntur itaque praesentium esse fugiat, facere nemo nam vitae corr... <a href="#">  Lire la suite...</a></p>
         </article>
-        <article>
+        <article class="article">
             <div class="article-info">
                 <div class="article-author"><i class="fas fa-user"></i> Administrateur</div>
                 <div class="article-date">
@@ -62,7 +63,7 @@
             <h3>Le festival se déroulera du 5 au 8 Août !</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quasi sed iste magnam quos ducimus unde perferendis ullam, consequatur sit voluptatibus eum placeat similique ad fugit in consequuntur itaque praesentium esse fugiat, facere nemo nam vitae corr... <a href="#">  Lire la suite...</a></p>
         </article>
-        <article>
+        <article class="article">
             <div class="article-info">
                 <div class="article-author"><i class="fas fa-user"></i> Administrateur</div>
                 <div class="article-date">
@@ -267,10 +268,45 @@
     </footer>
     <footer id="OpenClassrooms">
         <p>Copyright © 2021 - Sité realisé par <a href="https://younes-ziadi.com/">Younès ZIADI</a></p>
-        <p>Développeur d'application PHP/Symfony - <a href="https://openclassrooms.com">OpenClassrooms</a></p>
+        <p>Vous pouvez vous rendre <a href="">ici</a> sur le repository Github du projet.</p>
+        <p>Parcours Développeur d'application PHP/Symfony - <a href="https://openclassrooms.com">OpenClassrooms</a></p>
     </footer>
+    <div class="background">
+        <div class="popup">
+            <div class="card-top">
+                <div class="imageBox"><img class="content-thumbnail" src="https://source.unsplash.com/random/800x800"/></div>
+                <div class="content">
+                    <div class="content-top">
+                        <h5>Titre</h5>
+                        <div class="content-rating">
+                            <svg>
+                                <circle cx="40" cy="40" r="40"></circle>
+                                <circle cx="40" cy="40" r="40"></circle>
+                            </svg>
+                            <div class="rating-number">
+                                7.8
+                            </div>
+                        </div>
+                    </div>
+                    <p class="release-data">
+                        Parution: 24/01/2021
+                    </p>
+                    <div class="tags">
+                        <div class="tag">Tag</div>
+                        <div class="tag">Tag</div>
+                        <div class="tag">Tag</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cardbottom">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veritatis quos enim aperiam, fugiat, laudantium beatae, voluptates sed ab vero sit fuga sapiente at? Unde consequatur blanditiis veniam soluta. Explicabo reprehenderit totam iusto corporis, debitis commodi laboriosam, tenetur suscipit esse quod recusandae temporibus alias repellat quam deleniti perferendis modi accusamus?
+                </p>
+                <button>D'accord</button>
+            </div>
+        </div>
+    </div>
     <script src="script.js">
-
     </script>
     <script>
         function cookieDisplay() {
@@ -279,28 +315,42 @@
         function toggleMenu() {
             document.querySelector('.toggle').classList.toggle('active')
         }
+        const get = _ => { 
+        const getOffset = _ => {
+            const rect = _.getBoundingClientRect();
+                return {
+                    left: rect.left - window.scrollX,
+                    top: rect.top - window.scrollY
+                };
+            }
+            return(getOffset(document.getElementById(_)).top)
+        }
+        const Home = get('Page-Header')-100;
+        const News = get('NewsSection')-100;
+        const Movies = get('MoviesSection')-100;
+        const Booking = get('BookingSection')-100;
+        const Contact = get('ContactSection')-100;
         function navUpdate(scroll){
-    const nav_links = document.querySelectorAll('.nav-link');
-    if(scroll < 1680){
+    if(scroll < News){
         removeActiveClasses();
         window.history.replaceState("Accueil", "Accueil", "#Home")
         nav_links[0].classList.add('active');
     }
-    else if(scroll >= 1680 && scroll < 2522){
+    else if(scroll > News && scroll < Movies){
         removeActiveClasses();
         window.history.replaceState("Actualités", "Actualités", "#News")
         nav_links[1].classList.add('active');
     }
-    else if(scroll >= 2522 && scroll < 3323){
+    else if(scroll > Movies && scroll < Booking){
         removeActiveClasses();
         window.history.replaceState("À L'affiche", "À L'affiche", "#Movies")
         nav_links[2].classList.add('active');
     }
-    else if(scroll >= 3323 && scroll < 4166){
+    else if(scroll > Booking && scroll < Contact){
         window.history.replaceState("Réserver", "Réserver", "#Booking")
         removeActiveClasses();
         nav_links[3].classList.add('active');
-    }else{
+    }else if(scroll > Contact){
         removeActiveClasses();
         window.history.replaceState("Nous Contacter", "Nous Contacter", "#Contact")
         nav_links[4].classList.add('active');

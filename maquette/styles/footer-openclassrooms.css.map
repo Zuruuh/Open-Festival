@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,MAAM,AAAA,eAAe,CAAA;EACjB,UAAU,EAAE,OAAoB;CAWnC;;AAZD,AAEI,MAFE,AAAA,eAAe,CAEf,CAAC,CAAA;EACC,KAAK,EAAE,OAAO;EACd,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,GAAG;CAKf;;AAXL,AAOQ,MAPF,AAAA,eAAe,CAEf,CAAC,CAKG,CAAC,CAAA;EACC,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,IAAI;CACxB",
-    "sources": [
-        "footer-openclassrooms.scss"
-    ],
-    "names": [],
-    "file": "footer-openclassrooms.css"
-}

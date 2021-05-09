@@ -1,4 +1,5 @@
-var API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fc76a04962defb059ffa9428a2b0dbd9&page=1';
+var API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fc76a04962defb059ffa9428a2b0dbd9&page=1&language=fr-FR';
+var GENRE_API_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=fc76a04962defb059ffa9428a2b0dbd9&language=fr-FR';
 var IMAGE_PATH = 'https://image.tmdb.org/t/p/w1280';
 var moviesElements = document.querySelectorAll('.movie');
 var moviesHeader = document.querySelector('.MoviesHeader');
@@ -7,10 +8,19 @@ var data;
 var date=1;
 var i=0;
 var api_data;
+var genres_data;
+
+async function getGenres(url){
+    const res = await fetch(url);
+    const data = await res.json();
+    genres_data = data.genres;
+}
+getGenres(GENRE_API_URL)
 async function getMovies(url) {
     const res = await fetch(url);
     const data = await res.json();
     api_data = data.results;
+    console.log(api_data);
     selectContent();
 };
 getMovies(API_URL);
@@ -38,19 +48,19 @@ function selectContent(){
     api_data.forEach((film) => {
         const { title, poster_path, vote_average, overview } = film;
         if(filmIndex-1 == m1 || filmIndex == m1 || filmIndex+1 == m1){
-            updateContent(film)
+            updateContent(film, m1)
         }
         filmIndex++;
         initSelect(api_data)
     });
 }
 
-function updateContent(array){
-    const imgBox:Element = moviesElements[i].querySelector('.imageBox');
+function updateContent(array, idx){
+    const imgBox: HTMLElement = moviesElements[i].querySelector('.imageBox');
 
-    const thumbnail:HTMLImageElement = imgBox.querySelector('.thumbnail');
+    const thumbnail: HTMLImageElement = imgBox.querySelector('.thumbnail');
     thumbnail.src = `${IMAGE_PATH+array.poster_path}`;
-
+    
     imgBox.querySelector('.movie-desc').innerHTML = ``;
 
     var owtitle = document.createElement('h5');
@@ -59,51 +69,55 @@ function updateContent(array){
     owtitle.innerText = array.title;
     owdesc.innerText = array.overview;
 
+    var button:HTMLButtonElement = moviesElements[i].querySelector('.movie-info-btn');
+    
+    button.setAttribute("film", "");
+    button.setAttribute('film', `${i-1+idx}`);
+
     imgBox.querySelector('.movie-desc').appendChild(owtitle);
     imgBox.querySelector('.movie-desc').appendChild(owdesc);
 
-    const movieTitle:HTMLTitleElement = moviesElements[i].querySelector('.movie-title')
+    const movieTitle: HTMLTitleElement = moviesElements[i].querySelector('.movie-title')
     movieTitle.innerText = array.title;
 
     var releaseDate = array.release_date.split("-");
     switch(releaseDate[1]){
         case "01":
-            releaseDate[1] = " Janvier "
+            releaseDate[1] = " Janvier ";
             break;
         case "02":
-            releaseDate[1] = " Février "
+            releaseDate[1] = " Février ";
             break;
         case "03":
-            releaseDate[1] = " Mars "
+            releaseDate[1] = " Mars ";
             break;
         case "04":
-            releaseDate[1] = " Avril "
+            releaseDate[1] = " Avril ";
             break;
         case "05":
-            releaseDate[1] = " Mai "
+            releaseDate[1] = " Mai ";
             break;
         case "06":
-            releaseDate[1] = " Juin "
+            releaseDate[1] = " Juin ";
             break;
         case "07":
-            releaseDate[1] = " Juillet "
+            releaseDate[1] = " Juillet ";
             break;
         case "08":
-            releaseDate[1] = " Août "
+            releaseDate[1] = " Août ";
             break;
         case "09":
-            releaseDate[1] = " Septembre "
+            releaseDate[1] = " Septembre ";
             break;
         case "10":
-            releaseDate[1] = " Octobre "
+            releaseDate[1] = " Octobre ";
             break;
         case "11":
-            releaseDate[1] = " Novembre "
+            releaseDate[1] = " Novembre ";
             break;
         case "12":
-            releaseDate[1] = " Décembre "
+            releaseDate[1] = " Décembre ";
             break;
-            
     }
     moviesElements[i].querySelector('.movie-release').innerHTML =`
     <i class="fas fa-calendar"></i>
@@ -188,3 +202,39 @@ function removeActiveClasses(){
         menu_element.classList.remove('active')
     })
 }
+
+const nav_links = document.querySelectorAll('.nav-link');
+
+const moviesInfoButtons = document.querySelectorAll('.movie-info-btn');
+
+const openFilmPopup = _ => {
+    const genres = [];
+    api_data[_].genre_ids.forEach((genre) => {
+        function checkGenre(genre){
+            genres_data.forEach((id) => {
+                if(id.id == genre) genres.push(id.name)
+            })
+        }
+        checkGenre(genre)
+    })
+    const background:HTMLDivElement = document.createElement('div');
+    const movieCard:HTMLDivElement = document.createElement('div');
+
+    background.classList.add("background");
+    movieCard.classList.add("popup");
+
+    const cardbottom = document.createElement("div");
+    const cardtop = document.createElement('div');
+
+    
+
+    document.body.classList.add('scroll-lock');
+    console.log(background);
+    document.body.appendChild(background);
+    background.appendChild(movieCard);
+}
+
+moviesInfoButtons.forEach((button) => {
+    button.addEventListener("click", (e) => openFilmPopup(button.getAttribute('film')))
+})
+

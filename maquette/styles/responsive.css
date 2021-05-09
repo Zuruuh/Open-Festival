@@ -1,15 +1,16 @@
+@charset "UTF-8";
 @media screen and (max-width: 1200px) {
   header#Page-Header h1 {
     font-size: 5em;
   }
   .formContainer .contactForm {
-    width: 500px;
+    width: 500px !important;
   }
   .formContainer .formBox {
-    width: 500px;
+    width: 500px !important;
   }
   .formContainer .formBox div label {
-    font-size: 1.1em;
+    font-size: 1.1em !important;
   }
 }
 
@@ -41,6 +42,62 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  footer#Page-Footer {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: flex-start !important;
+    padding-left: 50px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #BookingSection {
+    height: auto !important;
+  }
+  #ContactSection {
+    height: auto !important;
+    padding: 100px 0 !important;
+  }
+  #ContactSection h2 {
+    padding: 0 !important;
+    padding-bottom: 20px !important;
+  }
+  .formContainer {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    width: 100% !important;
+  }
+  .formContainer .bookingForm {
+    width: 100% !important;
+  }
+  .formContainer .bookingForm .formBox {
+    width: 100% !important;
+  }
+  .formContainer img {
+    display: none !important;
+  }
+  .formContainer {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    width: 100% !important;
+  }
+  .formContainer .contactForm {
+    width: 100% !important;
+  }
+  .formContainer .contactForm .formBox {
+    margin: 0 !important;
+    padding: 50px !important;
+    width: 100% !important;
+  }
+  .formContainer img {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -63,6 +120,9 @@
   header#Page-Header h2 {
     font-size: 1.3em;
   }
+  header#Page-Header section#Intro p {
+    font-size: 1.1em !important;
+  }
   header.MoviesHeader {
     -webkit-box-align: start;
         -ms-flex-align: start;
@@ -77,24 +137,24 @@
     width: 100vw;
   }
   header.MoviesHeader button {
-    position: absolute;
-    top: 100%;
-    margin: 0;
-    border-color: #44acf2;
-    width: 50%;
-    background-color: #44acf2;
-    border-radius: 0;
-    border-top: 1px solid #111;
+    position: absolute !important;
+    top: 100% !important;
+    margin: 0 !important;
+    border-color: #44acf2 !important;
+    width: 50% !important;
+    background-color: #44acf2 !important;
+    border-radius: 0 !important;
+    border-top: 1px solid #111 !important;
   }
   header.MoviesHeader button:hover {
-    background-color: #2da1f0;
+    background-color: #2da1f0 !important;
   }
   header.MoviesHeader button.movies-carousel-left {
-    left: 0;
-    border-right: 1px solid #111;
+    left: 0  !important;
+    border-right: 1px solid #111  !important;
   }
   header.MoviesHeader button.movies-carousel-right {
-    right: 0;
+    right: 0  !important;
   }
 }
 
@@ -134,9 +194,13 @@
   }
   section#NewsSection {
     height: auto !important;
+    padding-bottom: 30px ​ !important;
   }
   section#Intro a {
     font-size: 1.3em;
+  }
+  header.MoviesHeader h2 {
+    font-size: 1em !important;
   }
 }
 
@@ -155,6 +219,9 @@
   }
   .article .article-info {
     display: none !important;
+  }
+  header.MoviesHeader h2 {
+    font-size: 0.7em !important;
   }
   section#MoviesSection .movies-container .movie {
     height: 500px;

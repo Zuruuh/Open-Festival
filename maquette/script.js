@@ -34,7 +34,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fc76a04962defb059ffa9428a2b0dbd9&page=1';
+var API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fc76a04962defb059ffa9428a2b0dbd9&page=1&language=fr-FR';
+var GENRE_API_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=fc76a04962defb059ffa9428a2b0dbd9&language=fr-FR';
 var IMAGE_PATH = 'https://image.tmdb.org/t/p/w1280';
 var moviesElements = document.querySelectorAll('.movie');
 var moviesHeader = document.querySelector('.MoviesHeader');
@@ -42,6 +43,25 @@ var data;
 var date = 1;
 var i = 0;
 var api_data;
+var genres_data;
+function getGenres(url) {
+    return __awaiter(this, void 0, void 0, function () {
+        var res, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch(url)];
+                case 1:
+                    res = _a.sent();
+                    return [4 /*yield*/, res.json()];
+                case 2:
+                    data = _a.sent();
+                    genres_data = data.genres;
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+getGenres(GENRE_API_URL);
 function getMovies(url) {
     return __awaiter(this, void 0, void 0, function () {
         var res, data;
@@ -54,6 +74,7 @@ function getMovies(url) {
                 case 2:
                     data = _a.sent();
                     api_data = data.results;
+                    console.log(api_data);
                     selectContent();
                     return [2 /*return*/];
             }
@@ -85,13 +106,13 @@ function selectContent() {
     api_data.forEach(function (film) {
         var title = film.title, poster_path = film.poster_path, vote_average = film.vote_average, overview = film.overview;
         if (filmIndex - 1 == m1 || filmIndex == m1 || filmIndex + 1 == m1) {
-            updateContent(film);
+            updateContent(film, m1);
         }
         filmIndex++;
         initSelect(api_data);
     });
 }
-function updateContent(array) {
+function updateContent(array, idx) {
     var imgBox = moviesElements[i].querySelector('.imageBox');
     var thumbnail = imgBox.querySelector('.thumbnail');
     thumbnail.src = "" + (IMAGE_PATH + array.poster_path);
@@ -100,6 +121,9 @@ function updateContent(array) {
     var owdesc = document.createElement('p');
     owtitle.innerText = array.title;
     owdesc.innerText = array.overview;
+    var button = moviesElements[i].querySelector('.movie-info-btn');
+    button.setAttribute("film", "");
+    button.setAttribute('film', "" + (i - 1 + idx));
     imgBox.querySelector('.movie-desc').appendChild(owtitle);
     imgBox.querySelector('.movie-desc').appendChild(owdesc);
     var movieTitle = moviesElements[i].querySelector('.movie-title');
@@ -198,3 +222,28 @@ function removeActiveClasses() {
         menu_element.classList.remove('active');
     });
 }
+var nav_links = document.querySelectorAll('.nav-link');
+var moviesInfoButtons = document.querySelectorAll('.movie-info-btn');
+var openFilmPopup = function (_) {
+    var genres = [];
+    api_data[_].genre_ids.forEach(function (genre) {
+        function checkGenre(genre) {
+            genres_data.forEach(function (id) {
+                if (id.id == genre)
+                    genres.push(id.name);
+            });
+        }
+        checkGenre(genre);
+    });
+    var background = document.createElement('div');
+    var movieCard = document.createElement('div');
+    background.classList.add("background");
+    movieCard.classList.add("popup");
+    document.body.classList.add('scroll-lock');
+    console.log(background);
+    document.body.appendChild(background);
+    background.appendChild(movieCard);
+};
+moviesInfoButtons.forEach(function (button) {
+    button.addEventListener("click", function (e) { return openFilmPopup(button.getAttribute('film')); });
+});

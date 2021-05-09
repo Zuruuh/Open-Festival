@@ -1,15 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900");
-@import url("./nav.css");
-@import url("./header.css");
-@import url("./section-intro.css");
-@import url("./section-news.css");
-@import url("./section-movies.css");
-@import url("./section-booking.css");
-@import url("./section-contact.css");
-@import url("./footer-pageFooter.css");
-@import url("./footer-openclassrooms.css");
-@import url("./scroll-button.css");
-@import url("./cookies.css");
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +19,8 @@ html {
   background: transparent;
   position: absolute;
   margin-top: -100px;
+  top: 0;
+  left: 0;
 }
 
 section {
@@ -57,12 +48,832 @@ body {
   overflow-x: hidden;
 }
 
+body.scroll-lock {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
 h2.section-title {
   color: #3282B8;
   font-size: 3em;
   width: 100%;
   text-align: center;
   padding: 20px 0;
+}
+
+/*===============================Navigation================================*/
+nav {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: #1b262c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav .nav-logo {
+  color: #bbe1fa;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 3em;
+  margin-left: 25px;
+  -webkit-transition: all 0.05s ease-out;
+  transition: all 0.05s ease-out;
+}
+
+nav .nav-logo:hover {
+  -webkit-transition: all 0.05s ease-out;
+  transition: all 0.05s ease-out;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0px 20px;
+  list-style-type: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #bbe1fa;
+  font-size: 1.5em;
+  position: relative;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+nav ul li a.active {
+  color: #5cb7f3;
+}
+
+nav ul li a:hover {
+  color: #3282b8;
+}
+
+nav ul li a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  visibility: hidden;
+  background: #bbe1fa;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+nav ul li a:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  visibility: hidden;
+  background: #3282b8;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+nav ul li a:hover::after {
+  visibility: visible;
+  width: 100%;
+}
+
+nav ul li.toggle {
+  cursor: default;
+  display: none;
+}
+
+/*===============================Header====================================*/
+header#Page-Header {
+  height: calc(100vh - 100px);
+  margin-top: 100px;
+  width: 100%;
+  overflow-wrap: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: url("https://cdn.pixabay.com/photo/2016/03/23/17/33/curtain-1275200_960_720.png") no-repeat center center/cover;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header#Page-Header h1 {
+  width: 80%;
+  max-width: 1200px;
+  text-align: center;
+  font-size: 7em;
+  color: #44acf2;
+}
+
+header#Page-Header h2 {
+  word-break: break-word;
+  color: #bbe1fa;
+  font-size: 2em;
+  text-align: center;
+  width: 80%;
+  overflow: normal;
+}
+
+header#Page-Header .header-button {
+  background: #44acf2;
+  text-decoration: none;
+  color: #e5e5e5;
+  padding: 10px 30px;
+  font-size: 2em;
+  margin-top: 25px;
+  border-radius: 15px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  border: 1px solid transparent;
+}
+
+header#Page-Header .header-button:hover {
+  background: #e5e5e5;
+  color: #44acf2;
+  border: 1px solid #111;
+}
+
+/*===============================Section-Intro=============================*/
+section#Intro {
+  height: 90vh;
+  background: #11181c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#Intro h2 {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+section#Intro p {
+  width: 600px;
+  text-align: center;
+  font-size: 1.7em;
+  font-weight: 500;
+  color: #BBE1FA;
+  margin-bottom: 20px;
+}
+
+section#Intro a {
+  background: #44acf2;
+  text-decoration: none;
+  color: #e5e5e5;
+  padding: 10px 30px;
+  font-size: 1.7em;
+  margin-top: 25px;
+  border-radius: 45px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+section#Intro a:hover {
+  background: #e5e5e5;
+  color: #44acf2;
+  border: 1px solid #111;
+}
+
+/*===============================Section-News==============================*/
+#News {
+  height: 0;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  margin-top: -100px;
+}
+
+section#NewsSection {
+  height: 90vh;
+  background: #25343c;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#NewsSection h2 {
+  padding: 20px 0;
+}
+
+section#NewsSection .article {
+  position: relative;
+  width: 800px;
+  height: 200px;
+  background: #f5f5f5;
+  margin: 10px;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+section#NewsSection .article .article-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+section#NewsSection .article .article-info::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  background: #25343C;
+  top: 25px;
+}
+
+section#NewsSection .article h3 {
+  margin-top: 10px;
+}
+
+section#NewsSection .article p a {
+  text-decoration: none;
+  color: #1598ee;
+}
+
+/*===============================Section-Movies============================*/
+#Movies {
+  height: 0;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  margin-top: -100px;
+}
+
+section#MoviesSection {
+  width: 100%;
+  height: 800px;
+  background: #11181C;
+}
+
+section#MoviesSection header {
+  background: #74c1f5;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  font-weight: 500;
+  font-size: 3.5em;
+}
+
+section#MoviesSection header button {
+  margin: 0 30px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #111;
+  background: transparent;
+  cursor: pointer;
+}
+
+section#MoviesSection header button.disabled {
+  cursor: not-allowed;
+}
+
+section#MoviesSection header button.disabled i {
+  color: #505050;
+}
+
+section#MoviesSection header button .fas {
+  font-size: 3.5em;
+}
+
+section#MoviesSection .movies-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 20px;
+  height: auto;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+}
+
+section#MoviesSection .movies-container .movie {
+  width: 350px;
+  padding: 10px;
+  border-radius: 20px;
+  height: 670px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#MoviesSection .movies-container .movie .imageBox {
+  position: relative;
+  overflow: hidden;
+  height: 450px;
+  margin-bottom: auto;
+}
+
+section#MoviesSection .movies-container .movie .imageBox:hover div.movie-desc {
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.4s all ease-out;
+  transition: 0.4s all ease-out;
+}
+
+section#MoviesSection .movies-container .movie .imageBox img {
+  width: 100%;
+  height: 450px;
+}
+
+section#MoviesSection .movies-container .movie .movie-desc {
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  position: absolute;
+  width: 330px;
+  height: auto;
+  text-align: left;
+  background: #e5e5e5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(101%);
+          transform: translateY(101%);
+  visibility: hidden;
+  opacity: 0;
+  padding: 20px;
+  -webkit-transition: 0.2s all ease-in;
+  transition: 0.2s all ease-in;
+}
+
+section#MoviesSection .movies-container .movie .movie-desc h5 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+section#MoviesSection .movies-container .movie h4 {
+  text-align: center;
+  color: #e5e5e5;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+section#MoviesSection .movies-container .movie p.movie-release,
+section#MoviesSection .movies-container .movie p.movie-time {
+  text-align: center;
+  color: #e5e5e5;
+}
+
+section#MoviesSection .movies-container .movie p.movie-release i,
+section#MoviesSection .movies-container .movie p.movie-time i {
+  -webkit-filter: invert(0.95%);
+          filter: invert(0.95%);
+}
+
+section#MoviesSection .movies-container .movie p.movie-release i::after,
+section#MoviesSection .movies-container .movie p.movie-time i::after {
+  content: '';
+}
+
+section#MoviesSection .movies-container .movie button {
+  margin-top: 10px;
+  color: #e5e5e5;
+  background: #44acf2;
+  border: 0;
+  outline: 0;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 1.3em;
+  cursor: pointer;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+section#MoviesSection .movies-container .movie button:hover {
+  background: #e5e5e5;
+  color: #44acf2;
+  border: 1px solid #111;
+}
+
+/*===============================Section-Booking===========================*/
+#Booking {
+  height: 0;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  margin-top: -100px;
+}
+
+section#BookingSection {
+  height: 90vh;
+  width: 100%;
+  background: #25343C;
+}
+
+section#BookingSection h2 {
+  width: 100%;
+  text-align: center;
+}
+
+section#BookingSection .formContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox {
+  background: #74C1F5;
+  width: 700px;
+  height: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 50px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox h3 {
+  margin-bottom: 50px;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox label {
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  outline: 0;
+  color: #111;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input:-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input::-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input::placeholder {
+  font-weight: 400;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input[type="submit"] {
+  position: relative;
+  left: 50%;
+  bottom: 10px;
+  width: auto;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 2em;
+  border: 1px solid transparent;
+  color: #74C1F5;
+  background: #e5e5e5;
+  padding: 10px 40px;
+  border-radius: 35px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input[type="submit"]:hover {
+  background: #fff;
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox input[type="submit"]:active {
+  -webkit-transform: translateX(-50%) scale(0.98);
+          transform: translateX(-50%) scale(0.98);
+}
+
+section#BookingSection .formContainer .bookingForm .formBox .inputBox select {
+  width: 100%;
+  outline: 0;
+}
+
+section#BookingSection .formContainer img {
+  width: 450px;
+  height: 700px;
+}
+
+/*===============================Section-Contact===========================*/
+#Contact {
+  height: 0;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  margin-top: -100px;
+}
+
+section#ContactSection {
+  height: 90vh;
+  width: 100%;
+  background: #11181C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section#ContactSection h2 {
+  width: 100%;
+  text-align: center;
+}
+
+section#ContactSection .formContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section#ContactSection .formContainer img {
+  width: 450px;
+  height: 95%;
+}
+
+section#ContactSection .formContainer .contactForm {
+  background: #74C1F5;
+  height: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 700px;
+}
+
+section#ContactSection .formContainer .contactForm h3 {
+  margin-bottom: 20px;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox label {
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  outline: 0;
+  color: #111;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input:-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input[type="submit"] {
+  position: relative;
+  left: 50%;
+  bottom: 10px;
+  width: auto;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 2em;
+  border: 1px solid transparent;
+  color: #74C1F5;
+  background: #e5e5e5;
+  padding: 10px 40px;
+  border-radius: 35px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input[type="submit"]:hover {
+  background: #fff;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox input[type="submit"]:active {
+  -webkit-transform: translateX(-50%) scale(0.98);
+          transform: translateX(-50%) scale(0.98);
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea {
+  resize: none;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  height: 200px;
+  outline: 0;
+  color: #111;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea::-webkit-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea:-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea::-ms-input-placeholder {
+  font-weight: 400;
+}
+
+section#ContactSection .formContainer .contactForm .inputBox textarea::placeholder {
+  font-weight: 400;
+}
+
+/*===============================Scroll-button===========================*/
+a.scroll-top {
+  visibility: hidden;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: transparent;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+a.scroll-top:hover {
+  -webkit-animation: float 2s ease-in-out infinite;
+          animation: float 2s ease-in-out infinite;
 }
 
 @-webkit-keyframes float {
@@ -93,5 +904,335 @@ h2.section-title {
     -webkit-transform: translateY(0);
             transform: translateY(0);
   }
+}
+
+/*===============================Page-Footer===============================*/
+footer#Page-Footer {
+  background: #1B262C;
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-top: 20px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+footer#Page-Footer section h3 {
+  margin: 0;
+  display: inline-block;
+}
+
+footer#Page-Footer * {
+  color: #e5e5e5;
+}
+
+footer#Page-Footer li {
+  list-style-type: none;
+  margin: 15px;
+}
+
+footer#Page-Footer h3::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 15px;
+  background: #3282B8;
+  margin-right: 10px;
+}
+
+footer#Page-Footer section.Footer-Contact {
+  width: auto;
+}
+
+footer#Page-Footer section.Footer-Socials {
+  width: auto;
+}
+
+footer#Page-Footer section.Footer-Socials ul {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer#Page-Footer section.Footer-Socials ul li {
+  position: relative;
+  list-style: none;
+  border-radius: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+footer#Page-Footer section.Footer-Socials ul li a {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  font-size: 30px;
+  border-radius: 50%;
+  color: #e2e2e2;
+  -webkit-box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer#Page-Footer section.Footer-Socials ul li a i {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+}
+
+footer#Page-Footer section.Footer-Socials ul li:hover {
+  color: #fff;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  -webkit-box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.2), 2px 24px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.2), 2px 24px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer#Page-Footer section.Footer-Socials ul li span::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: 5px;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: #1877f2;
+}
+
+footer#Page-Footer section.Footer-Socials ul li:nth-child(2) span::before {
+  background-color: #1DA1F2;
+}
+
+footer#Page-Footer section.Footer-Socials ul li:nth-child(3) span::before {
+  background-color: #c32aa3;
+}
+
+footer#Page-Footer section.Footer-Links {
+  width: auto;
+}
+
+footer#Page-Footer section.Footer-Links div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+footer#Page-Footer section.Footer-Links div a {
+  color: #3282B8;
+  text-decoration: none;
+}
+
+/*===============================Project-Footer============================*/
+footer#OpenClassrooms {
+  background: #080b0c;
+}
+
+footer#OpenClassrooms p {
+  color: #e5e5e5;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+
+footer#OpenClassrooms p a {
+  color: #74C1F5;
+  text-decoration: none;
+}
+
+/*===============================Cookies===================================*/
+.cookies {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 75px;
+  width: 100%;
+  z-index: 200;
+  background: #11181c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 25px 0 50px;
+  display: none;
+}
+
+.cookies p {
+  width: 85%;
+  color: #e5e5e5;
+}
+
+.cookies button.accept {
+  background: green;
+  width: auto;
+  border: 0;
+  outline: 0;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #e5e5e5;
+  font-size: 1.3em;
+  cursor: pointer;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.cookies button.accept:hover {
+  font-size: 1.35em;
+}
+
+/*===============================Pop-Ups===================================*/
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.background .popup {
+  width: 50%;
+  height: 90%;
+  background: #eeeeee;
+  position: relative;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.background .popup .card-top {
+  width: 100%;
+  height: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.background .popup .card-top .imageBox {
+  width: 33%;
+  height: 100%;
+  margin-right: 15px;
+}
+
+.background .popup .card-top .imageBox img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.background .popup .card-top .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 67%;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.background .popup .card-top .content-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.background .popup .card-top .content-top h5 {
+  font-size: 2em;
+}
+
+.background .popup .card-top .content-rating svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.background .popup .card-top .content-rating svg circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-width: 10;
+  stroke: rgba(0, 0, 0, 0.05);
+  -webkit-transform: translate(5px, 5px);
+          transform: translate(5px, 5px);
+  stroke-linecap: round;
+}
+
+.background .popup .card-top .content-rating svg circle:nth-child(2) {
+  stroke: #f00;
+  stroke-dasharray: 440px;
+  stroke-dashoffset: 40px;
+}
+
+.background .popup .cardbottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 60%;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

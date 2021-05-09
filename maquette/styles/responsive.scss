@@ -7,13 +7,13 @@
     }
     .formContainer .contactForm
     {
-        width: 500px ;
+        width: 500px !important;
     }
     .formContainer .formBox{
-        width: 500px ;
+        width: 500px !important;
         & div{
             & label{
-                font-size: 1.1em ;
+                font-size: 1.1em !important;
             }
         }
     }
@@ -45,6 +45,54 @@
             flex-direction: column ;
         }
     }
+
+    footer#Page-Footer{
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding-left: 50px;
+    }
+}
+
+@media screen and (max-width: 950px){
+    #BookingSection{
+        height: auto !important;
+    }
+    #ContactSection{
+        height: auto !important;
+        padding: 100px 0 !important;
+        & h2{
+            padding: 0 !important;
+            padding-bottom: 20px !important;
+        }
+    }
+    .formContainer{
+        justify-content: center !important;
+        width: 100% !important;
+        & .bookingForm{
+            width: 100% !important;
+            & .formBox{
+                width: 100% !important;
+            }
+        }
+        & img{
+            display: none !important;
+        }
+    }
+    .formContainer{
+        justify-content: center !important;
+        width: 100% !important;
+        & .contactForm{
+            width: 100% !important;
+            & .formBox{
+                margin: 0 !important;
+                padding: 50px !important;
+                width: 100% !important;
+            }
+        }
+        & img{
+            display: none !important;
+        }
+    }
 }
 
 @media screen and (max-width: 850px){
@@ -67,6 +115,11 @@
         & h2{
             font-size: 1.3em ;
         }
+        section#Intro{
+            & p{
+                font-size: 1.1em !important;
+            }
+        }
     }
     header.MoviesHeader{
         align-items: flex-start ;
@@ -77,23 +130,23 @@
             width: 100vw ;
         }
         & button{
-            position: absolute ;
-            top: 100% ;
-            margin: 0 ;
-            border-color: darken(#74C1F5, 10%) ;
-            width: 50%;
-            background-color: darken(#74C1F5, 10%) ;
-            border-radius: 0 ;
-            border-top: 1px solid #111 ;
+            position: absolute !important;
+            top: 100% !important;
+            margin: 0 !important;
+            border-color: darken(#74C1F5, 10%) !important;
+            width: 50% !important;
+            background-color: darken(#74C1F5, 10%) !important;
+            border-radius: 0 !important;
+            border-top: 1px solid #111 !important;
             &:hover{
-                background-color: darken(#74C1F5, 15%) ;
+                background-color: darken(#74C1F5, 15%) !important;
             }
             &.movies-carousel-left{
-                left:0  ;
-                border-right: 1px solid #111  ;
+                left:0  !important;
+                border-right: 1px solid #111  !important;
             }
             &.movies-carousel-right{
-                right: 0  ;
+                right: 0  !important;
             }
         }
     }
@@ -139,11 +192,18 @@
     }
     section#NewsSection{
         height: auto !important;
+        padding-bottom: 30px ​!important;
     }
 
     section#Intro{
         & a{
             font-size: 1.3em;
+        }
+    }
+
+    header.MoviesHeader{
+        & h2{
+            font-size: 1em !important;
         }
     }
 }
@@ -172,6 +232,11 @@
         display: none !important;
     }
 
+    header.MoviesHeader{
+        & h2{
+            font-size: 0.7em !important;
+        }
+    }
     section#MoviesSection{
         & .movies-container{
             & .movie{
