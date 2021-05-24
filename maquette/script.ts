@@ -1,14 +1,18 @@
-var API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fc76a04962defb059ffa9428a2b0dbd9&page=1&language=fr-FR';
-var GENRE_API_URL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=fc76a04962defb059ffa9428a2b0dbd9&language=fr-FR';
-var IMAGE_PATH = 'https://image.tmdb.org/t/p/w1280';
-var moviesElements = document.querySelectorAll('.movie');
-var moviesHeader = document.querySelector('.MoviesHeader');
+const API_URL:String = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fc76a04962defb059ffa9428a2b0dbd9&page=1&language=fr-FR';
+const GENRE_API_URL:String = 'https://api.themoviedb.org/3/genre/movie/list?api_key=fc76a04962defb059ffa9428a2b0dbd9&language=fr-FR';
+const IMAGE_PATH:String = 'https://image.tmdb.org/t/p/w1280';
+var moviesElements:NodeListOf<HTMLElement> = document.querySelectorAll('.movie');
+var moviesHeader:HTMLElement = document.querySelector('.MoviesHeader');
 
 var data;
-var date=1;
-var i=0;
+var date:number = 1;
+var i:number = 0;
 var api_data;
 var genres_data;
+
+const scale:Function = (num, in_min, in_max, out_min, out_max) => {
+    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+} 
 
 async function getGenres(url){
     const res = await fetch(url);
@@ -20,7 +24,6 @@ async function getMovies(url) {
     const res = await fetch(url);
     const data = await res.json();
     api_data = data.results;
-    console.log(api_data);
     selectContent();
 };
 getMovies(API_URL);
@@ -30,7 +33,7 @@ function selectContent(){
     api_data.splice(12);
     data = api_data;
     var filmIndex=0;
-    var m1;
+    var m1:number;
     switch(date){
         case 1:
             m1=1;
@@ -65,10 +68,10 @@ function updateContent(array, idx){
 
     var owtitle = document.createElement('h5');
     var owdesc = document.createElement('p');
-
+    var overvieww = array.overview;
+    if(overvieww.length > 400) overvieww = overvieww.slice(0, 400) + " ...";
     owtitle.innerText = array.title;
-    owdesc.innerText = array.overview;
-
+    owdesc.innerText = overvieww;
     var button:HTMLButtonElement = moviesElements[i].querySelector('.movie-info-btn');
     
     button.setAttribute("film", "");
@@ -81,48 +84,61 @@ function updateContent(array, idx){
     movieTitle.innerText = array.title;
 
     var releaseDate = array.release_date.split("-");
-    switch(releaseDate[1]){
-        case "01":
-            releaseDate[1] = " Janvier ";
-            break;
-        case "02":
-            releaseDate[1] = " Février ";
-            break;
-        case "03":
-            releaseDate[1] = " Mars ";
-            break;
-        case "04":
-            releaseDate[1] = " Avril ";
-            break;
-        case "05":
-            releaseDate[1] = " Mai ";
-            break;
-        case "06":
-            releaseDate[1] = " Juin ";
-            break;
-        case "07":
-            releaseDate[1] = " Juillet ";
-            break;
-        case "08":
-            releaseDate[1] = " Août ";
-            break;
-        case "09":
-            releaseDate[1] = " Septembre ";
-            break;
-        case "10":
-            releaseDate[1] = " Octobre ";
-            break;
-        case "11":
-            releaseDate[1] = " Novembre ";
-            break;
-        case "12":
-            releaseDate[1] = " Décembre ";
-            break;
-    }
+    var finalDate = (getDate(releaseDate));
+
     moviesElements[i].querySelector('.movie-release').innerHTML =`
     <i class="fas fa-calendar"></i>
-    ${releaseDate[2]+ releaseDate[1] +" "+releaseDate[0]}`;
+    ${finalDate}`;
     i++;
+}
+
+function getDate(date){
+    var day:string = date[2];
+    var dayArr = day.split('');
+    if(dayArr[0] == "0") {
+        day = dayArr[1];
+    }
+    var month:string = date[1];
+    var year:string = date[0];
+    switch(month){
+        case "01":
+            month = " Janvier ";
+            break;
+        case "02":
+            month = " Février ";
+            break;
+        case "03":
+            month = " Mars ";
+            break;
+        case "04":
+            month = " Avril ";
+            break;
+        case "05":
+            month = " Mai ";
+            break;
+        case "06":
+            month = " Juin ";
+            break;
+        case "07":
+            month = " Juillet ";
+            break;
+        case "08":
+            month = " Août ";
+            break;
+        case "09":
+            month = " Septembre ";
+            break;
+        case "10":
+            month = " Octobre ";
+            break;
+        case "11":
+            month = " Novembre ";
+            break;
+        case "12":
+            month = " Décembre ";
+            break;
+    }
+    return `${day}${month}${year}`;
 }
 
 function initSelect(data){
@@ -146,7 +162,7 @@ function optionBuilder(title1: string, title2: string, title3: string){
     return `
     <option value="${title1}">18H-20H ➔ ${title1}</option>
     <option value="${title2}">20H-22H ➔ ${title2}</option>
-    <option value="${title3}">22-Minuit ➔ ${title3}</option>
+    <option value="${title3}">22H-Minuit ➔ ${title3}</option>
     `;
 }
 
@@ -222,19 +238,107 @@ const openFilmPopup = _ => {
 
     background.classList.add("background");
     movieCard.classList.add("popup");
+    document.body.classList.add('scroll-lock');
 
-    const cardbottom = document.createElement("div");
-    const cardtop = document.createElement('div');
+    movieCard.innerHTML =
+    `
+    <div class="card-top">
+        <div class="imageBox">
+            <img class="content-thumbnail" src="${IMAGE_PATH + api_data[_].poster_path}"/>
+        </div>
+        <div class="content">
+            <div class="content-top">
+                <h5>${api_data[_].title}</h5>
+                <div class="content-rating">
+                    <svg>
+                    <circle cx="40" cy="40" r="40"></circle>
+                        <circle cx="40" cy="40" r="40" class="circle" style="
+                        stroke-dashoffset:${scale(api_data[_].vote_average, 0, 10, 500, 250)};
+                        stroke:${getColor(api_data[_].vote_average)};
+                        stroke-dasharray: 500;
+                        ">
+                        </circle>
+                    </svg>
+                    <p class="rating-number">
+                    ${api_data[_].vote_average}
+                    <sub style="
+                            font-size: 0.6em;
+                            font-weight: 400;
+                            ">/10</sub></p>
+                    </p>
+                </div>
+            </div>
+        <p class="release-date">
+                        Parution: ${(getDate(api_data[_].release_date.split('-')))}
+        </p>
+        <div class="tags">
+            ${returnGenres(genres)}
+        </div>
+    </div>
+</div>
+    <div class="cardbottom">
+        <p>
+                ${api_data[_].overview}  
+        </p>
+        <button class="popup-close-btn">D'accord</button>
+    </div>
+    `;
 
     
 
-    document.body.classList.add('scroll-lock');
-    console.log(background);
     document.body.appendChild(background);
     background.appendChild(movieCard);
+    initEvents(background);
 }
 
 moviesInfoButtons.forEach((button) => {
     button.addEventListener("click", (e) => openFilmPopup(button.getAttribute('film')))
 })
 
+function initEvents(background){
+
+    const button:HTMLButtonElement = document.querySelector('.popup-close-btn')
+
+    button.addEventListener('click', (e) => {
+        closePopup(e)
+        document.body.classList.remove('scroll-lock');
+    })
+    background.addEventListener('click', (e) => closePopup(e))
+
+
+    const closePopup = _ => {
+        if(_.target == background || _.target == button){
+            background.remove();
+            document.body.classList.remove('scroll-lock')
+        }
+    }
+
+}
+
+function getColor(note){
+    if(note <= 4)return '#EA2620 ';
+    else if(note <= 6)return '#EAE120';
+    else if(note <= 8)return '#91EA20';
+    else if(note <= 10)return '#38EA20';
+}
+
+function returnGenres(array){
+    var final = "";
+    array.forEach((element) => {
+        final+=
+        `
+        <div class="tag">${element}</div>
+        `;
+    })
+    return final;
+}
+
+const links:NodeListOf<HTMLLIElement> = document.querySelectorAll('.mobile-nav li');
+links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+        document.querySelector('.mobile-nav').classList.toggle('active');
+        document.querySelector('.toggle').classList.toggle('active');
+    })
+})
+        
+        
