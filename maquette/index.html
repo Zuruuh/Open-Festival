@@ -3,28 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
     <title>Festival de Films de Plein Air</title>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </head>
-<body onscroll="navUpdate(window.pageYOffset)" class="scroll-lock">
+<body>
     <div id="Home"></div>
     <nav>
-        <a href="#" class="nav-logo">Logo</a>
-
-        <ul>
-            <li><a href="#Home" class="nav-link active">Accueil</a></li>
-            <li><a href="#News" class="nav-link">Actualités</a></li>
-            <li><a href="#Movies" class="nav-link">À L'affiche</a></li>
-            <li><a href="#Booking" class="nav-link">Réserver</a></li>
-            <li><a href="#Contact" class="nav-link">Nous Contacter</a></li>
-            <li class="toggle" onclick='toggleMenu()'><i class="fas fa-bars"></i></li>
+        <a href="#" class="nav-logo" onclick="enableCookies()">Logo</a>
+        <ul class="default-nav">
+            <li><a href="#Home" onclick='updateNav(0)' class="nav-link active">Accueil</a></li>
+            <li><a href="#News" onclick='updateNav(1)' class="nav-link">Actualités</a></li>
+            <li><a href="#Movies" onclick='updateNav(2)' class="nav-link">À L'affiche</a></li>
+            <li><a href="#Booking" onclick='updateNav(3)' class="nav-link">Réserver</a></li>
+            <li><a href="#Contact" onclick='updateNav(4)' class="nav-link">Nous Contacter</a></li>
+            <li class="toggle" onclick='toggleMenu()'>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </li>
+        </ul>
+        <ul class="mobile-nav">
+            <li><a href="#Home"><span>Accueil</span></a></li>
+            <li><a href="#News"><span>Actualités</span></a></li>
+            <li><a href="#Movies"><span>À L'affiche</span></a></li>
+            <li><a href="#Booking"><span>Réserver</span></a></li>
+            <li><a href="#Contact"><span>Nous Contacter</span></a></li>
         </ul>
     </nav>
 
     <header id="Page-Header">
+        <div id="Home"></div>
             <h1>Festival de Films de Plein Air</h1>
             <h2>Bienvenue sur notre page internet ! <span style="display:inline-block;"> Notre prochain festival se déroulera en Août, au parc Monceau!</h2>
             <a href="#News" class="header-button">Me Renseigner</a>
@@ -36,10 +47,10 @@
         <p>Nous sommes l'équipe du Festival de Films de pleine air! Notre première édition du festival est organisée du 5 au 8 Août prochain au parc Monceau à Paris.<br><br>
         Vous êtes intéressés ? Alors réservez vos place tout de suite! C'est totalement gratuit!
         <p>
-        <a>Réservations</a>
+        <a href="#Booking">Réservations</a>
     </section>
-    <div id="News"></div>
     <section id="NewsSection">
+        <div id="News"></div>
         <h2 class="section-title"> Nos Actualités </h2>
         <article class="article">
             <div class="article-info">
@@ -75,8 +86,8 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quasi sed iste magnam quos ducimus unde perferendis ullam, consequatur sit voluptatibus eum placeat similique ad fugit in consequuntur itaque praesentium esse fugiat, facere nemo nam vitae corr... <a href="#">  Lire la suite...</a></p>
         </article>
     </section>
-    <div id="Movies"></div>
     <section id="MoviesSection">
+        <div id="Movies"></div>
         <header class="MoviesHeader">
             <button class="movies-carousel-left disabled" disabled>
                 <i class="fas fa-arrow-left"></i>
@@ -131,12 +142,12 @@
                 </div>
             </div>
     </section>
-    <div id="Booking"></div>
     <section id="BookingSection">
+        <div id="Booking"></div>
         <h2 class="section-title">Réserver vos places</h2>
         <div class="formContainer">
             <div class="bookingForm">
-                <div class="formBox">
+                <form class="formBox" method="GET">
                     <h3>Remplissez ce formulaire pour réserver vos places! Vous recevrez vos tickets par mail</h3>
                     <div class="inputBox">
                         <label for="Full-Name">Nom Complet</label><br>
@@ -152,38 +163,29 @@
                     </div>
                     <div class="inputBox">
                         <label for="Places">Nombre de places</label><br>
-                        <input type="number" name="Place" placeholder="2">
+                        <input type="number" required name="Place" placeholder="2">
                     </div>
                     <div class="inputBox">
                         <label for="Seance">Projection</label><br>
-                        <select name="Seance" id="Seances">
-                            <option value="Test">--Choisissez une Séance--</option>
-                            <option disabled value="Test">--5 Août--</option>
-                            <option disabled value="Test">--6 Août--</option>
-                            <option disabled value="Test">--7 Août--</option>
-                            <option disabled value="Test">--8 Août--</option>
+                        <select required name="Seance" id="Seances">
                         </select>
                     </div>
                     <div class="inputBox submit">
                         <input type="submit" value="Réserver">
                     </div>
-                </div>
+                </form>
             </div>
             <img src="https://media.istockphoto.com/photos/red-movie-popcorn-box-picture-id465453328?k=6&m=465453328&s=612x612&w=0&h=KZ3ZUfsuEvWK9wqaHHgyWNd385GeTu4puTTDvJRydIY=" alt="">
         </div>
         
     </section>
-
-    <div id="Contact"></div>
-
     <section id="ContactSection">
+        <div id="Contact"></div>
         <h2 class="section-title">Nous Contacter</h2>
         <div class="formContainer">
-            
-            <img src="https://media.istockphoto.com/photos/empty-comfortable-red-seats-with-numbers-in-cinema-picture-id504096800?k=6&m=504096800&s=612x612&w=0&h=KB_mDgmInIujMqY3nKpwafsl6XNDAAwVWRIe6BnFEiE=" alt="">
-
+            <div class="image"></div>
             <div class="contactForm">
-                <div class="formBox">
+                <form class="formBox" method="GET">
                     <h3>Contactez nos grâce à ce formulaire. Nous vous répondrons par mail le plus rapidement possible</h3>
                     <div class="inputBox">
                         <label for="Full-Name">Nom Complet</label><br>
@@ -195,24 +197,20 @@
                     </div>
                     <div class="inputBox">
                         <label for="Objet">Objet</label><br>
-                        <input type="text" name="Objet" placeholder="Objet">
+                        <input type="text" required name="Objet" placeholder="Objet">
                     </div>
                     <div class="inputBox">
                         <label for="Corps">Corps du message</label><br>
-                        <textarea name="Corps" id="Corps" cols="30" rows="10" placeholder="Ecrivez votre message ici..."></textarea>
+                        <textarea name="Corps" id="Corps" cols="30" rows="10" required placeholder="Ecrivez votre message ici..."></textarea>
                     </div>
                     <div class="inputBox submit">
                         <input type="submit" value="Envoyer">
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
     </section>
-    <div class="cookies">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum obcaecati labore adipisci vitae, rerum dignissimos quo quibusdam numquam accusamus iusto voluptate! Blanditiis incidunt dolor quasi.</p>
-        <button class="accept" onclick="cookieDisplay()">D'accord</button>
-    </div>
     <a class="scroll-top active" href="#Home">
         <i class="fas fa-chevron-up"></i>
     </a>
@@ -224,7 +222,7 @@
             <ul>
                 <li><i class="fas fa-envelope"></i> - contact@festival-de-films.org</li>
                 <li><i class="fas fa-home"></i> - 1 Rue Fortuny, Paris</li>
-                <li><i class="fas fa-phone"></i> - 01 23 45 67</li>
+                <li><i class="fas fa-phone"></i> - 01 23 45 67 89</li>
             </ul>
         </section>
         <section class="Footer-Socials">
@@ -251,111 +249,74 @@
             </ul>
         </section>
         <section class="Footer-Links">
-            <h3>Links</h3>
+            <h3>Liens</h3>
             <div>
                 <ul>
                     <li><a href="#Home">Accueil</a></li>
-                    <li><a href="#News">Actualités</a></li>
+                    <li><a href="#News">Actualités<br><br></a></li>
                     <li><a href="#Movies">À L'affiche</a>
                     </li>
                 </ul>
                 <ul>
                     <li><a href="#Booking">Réserver</a></li>
                     <li><a href="#Contact">Formulaire <br>de Contact</a></li>
+                    <li><a href="#Newsletter">Newsletter</a></li>
                 </ul>
             </div>
         </section>
     </footer>
     <footer id="OpenClassrooms">
         <p>Copyright © 2021 - Sité realisé par <a href="https://younes-ziadi.com/">Younès ZIADI</a></p>
-        <p>Vous pouvez vous rendre <a href="">ici</a> sur le repository Github du projet.</p>
+        <p>Vous pouvez vous rendre <a href="https://github.com/Zuruuh/Openclassrooms-PHP-P3/">ici</a> sur le repository Github du projet.</p>
         <p>Parcours Développeur d'application PHP/Symfony - <a href="https://openclassrooms.com">OpenClassrooms</a></p>
     </footer>
-    <div class="background">
-        <div class="popup">
-            <div class="card-top">
-                <div class="imageBox"><img class="content-thumbnail" src="https://source.unsplash.com/random/800x800"/></div>
-                <div class="content">
-                    <div class="content-top">
-                        <h5>Titre</h5>
-                        <div class="content-rating">
-                            <svg>
-                                <circle cx="40" cy="40" r="40"></circle>
-                                <circle cx="40" cy="40" r="40"></circle>
-                            </svg>
-                            <div class="rating-number">
-                                7.8
-                            </div>
-                        </div>
-                    </div>
-                    <p class="release-data">
-                        Parution: 24/01/2021
-                    </p>
-                    <div class="tags">
-                        <div class="tag">Tag</div>
-                        <div class="tag">Tag</div>
-                        <div class="tag">Tag</div>
-                    </div>
-                </div>
-            </div>
-            <div class="cardbottom">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit veritatis quos enim aperiam, fugiat, laudantium beatae, voluptates sed ab vero sit fuga sapiente at? Unde consequatur blanditiis veniam soluta. Explicabo reprehenderit totam iusto corporis, debitis commodi laboriosam, tenetur suscipit esse quod recusandae temporibus alias repellat quam deleniti perferendis modi accusamus?
-                </p>
-                <button>D'accord</button>
-            </div>
-        </div>
-    </div>
     <script src="script.js">
     </script>
+    
     <script>
+        const displayCookie = () => {
+            const cookie = document.createElement('div');
+            cookie.innerHTML = `
+                <p>Des cookies sont utilisés sur ce site. Néanmoins, seul les cookies nécessaires au fonctionnement du site sont utilisés.</p>
+                <button class="accept" onclick="cookieDisplay()">D'accord</button>
+            `
+            cookie.classList.add('cookies')
+            const ls = localStorage;
+            const cookieItem = ls.getItem('FF-Cookies');
+            if(!cookieItem)document.body.appendChild(cookie)
+        }
+        displayCookie()
         function cookieDisplay() {
             document.querySelector('.cookies').style.display = "none";
+            const ls = localStorage;
+            ls.setItem('FF-Cookies', false);
+        }
+        function enableCookies(){
+            const ls = localStorage;
+            ls.removeItem('FF-Cookies');
+            window.location.reload();
         }
         function toggleMenu() {
-            document.querySelector('.toggle').classList.toggle('active')
-        }
-        const get = _ => { 
-        const getOffset = _ => {
-            const rect = _.getBoundingClientRect();
-                return {
-                    left: rect.left - window.scrollX,
-                    top: rect.top - window.scrollY
-                };
+            const toggle = document.querySelector('.toggle')
+            const mnav = document.querySelector('.mobile-nav');
+
+            if(toggle.classList.contains('active')){
+                mnav.classList.toggle('active')
+                toggle.classList.toggle('active');
+            }else{
+                toggle.classList.toggle('active')
+                mnav.classList.toggle('active');
+
             }
-            return(getOffset(document.getElementById(_)).top)
+            
         }
-        const Home = get('Page-Header')-100;
-        const News = get('NewsSection')-100;
-        const Movies = get('MoviesSection')-100;
-        const Booking = get('BookingSection')-100;
-        const Contact = get('ContactSection')-100;
-        function navUpdate(scroll){
-    if(scroll < News){
-        removeActiveClasses();
-        window.history.replaceState("Accueil", "Accueil", "#Home")
-        nav_links[0].classList.add('active');
-    }
-    else if(scroll > News && scroll < Movies){
-        removeActiveClasses();
-        window.history.replaceState("Actualités", "Actualités", "#News")
-        nav_links[1].classList.add('active');
-    }
-    else if(scroll > Movies && scroll < Booking){
-        removeActiveClasses();
-        window.history.replaceState("À L'affiche", "À L'affiche", "#Movies")
-        nav_links[2].classList.add('active');
-    }
-    else if(scroll > Booking && scroll < Contact){
-        window.history.replaceState("Réserver", "Réserver", "#Booking")
-        removeActiveClasses();
-        nav_links[3].classList.add('active');
-    }else if(scroll > Contact){
-        removeActiveClasses();
-        window.history.replaceState("Nous Contacter", "Nous Contacter", "#Contact")
-        nav_links[4].classList.add('active');
-    }
-}
+        const updateNav = _ => {
+            const links = document.querySelectorAll('.default-nav li a');
+            links.forEach((link) => {
+                link.classList.remove('active');
+            })
+            links[_].classList.add('active');
+        }
     </script>
 </body>
 </html>

@@ -21,22 +21,52 @@
 
 
 @media screen and (max-width: 1160px){
-    nav ul li a{
+    nav ul.default-nav li a{
         font-size: 1.2em;
     }
 }
 
 @media screen and (max-width: 1002px){
-    nav ul li{
+    nav ul.default-nav li{
         display: none;
         &.toggle{
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
             color: #bbe1fa;
             font-size: 2em;
             cursor: pointer;
             border: 1px solid #bbe1fa;
-            padding :5px 15px;
             border-radius: 10px;
+            z-index: 2000;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            & .line{
+                height: 4px;
+                border-radius: 4px;
+                width: 40px;
+                background: #44acf2;
+                margin: 5px 0;
+                transition: all 0.4s;
+            }
+            &.active{
+                & .line{
+                    transition: all 0.4s;
+                    background: red;
+                }
+                & .line:nth-child(1){
+                    transform: rotate(-45deg) translate(-10px, 10px);
+                }
+                & .line:nth-child(2){
+                    background: #1B262C;
+                }
+                & .line:nth-child(3){
+                    transform: rotate(45deg) translate(-10px, -10px);
+                }
+            }
+            
         }
     }
     section#MoviesSection{
@@ -51,15 +81,44 @@
         align-items: flex-start !important;
         padding-left: 50px;
     }
+    .popup{
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    .popup .card-top{
+        flex-direction: column!important;
+        & .content {
+            width: 100%!important;
+            & .content-top{
+                & h5{
+                    font-size: 1.2em;
+                }
+            }
+        }
+        & .content .content-top .content-rating{
+            position: absolute!important;
+            right: 10px!important;
+            bottom: -20px!important;
+        }
+    }
+    .cardbottom{
+        height: 100% !important;
+        justify-content: space-between!important;
+        & p{
+            font-size: 0.8em;
+        }
+    }
 }
 
 @media screen and (max-width: 950px){
     #BookingSection{
         height: auto !important;
+        padding-bottom: 0 !important;
     }
     #ContactSection{
         height: auto !important;
         padding: 100px 0 !important;
+        padding-bottom: 0 !important;
         & h2{
             padding: 0 !important;
             padding-bottom: 20px !important;
@@ -80,7 +139,9 @@
     }
     .formContainer{
         justify-content: center !important;
+        flex-direction: column-reverse !important;
         width: 100% !important;
+        padding-bottom: 75px !important;
         & .contactForm{
             width: 100% !important;
             & .formBox{
@@ -88,6 +149,10 @@
                 padding: 50px !important;
                 width: 100% !important;
             }
+        }
+        & .image{
+            height: 350px !important;
+            width: 100% !important;
         }
         & img{
             display: none !important;
@@ -164,6 +229,9 @@
             margin: 0 !important;
         }
     }
+    .card-top{
+        align-items: flex-start !important;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -171,6 +239,17 @@
     header#MoviesHeader{
         & h2{
             font-size: 1em  ;   
+        }
+    }
+
+    .popup{
+        width: 100%!important;
+        height: 100%!important;
+        border-radius: 0px 0px 0px 0px !important;
+    }
+    .cookies{
+        & p{
+            font-size: 0.7em!important;
         }
     }
 
@@ -182,7 +261,8 @@
         margin: 0 !important;
     }
     header#Page-Header{
-        height: 60vh  ;
+        height: auto!important;
+        padding-bottom: 20px;
         & h1{
             font-size: 3em ;
         }
@@ -208,18 +288,33 @@
     }
 }
 
+@media screen and (max-width: 400px){
+    .cookies{
+        padding: 10px 10px;
+        & p{
+            font-size: 0.5em!important;
+        }
+        & button{
+            font-size: 0.8em!important;
+        }
+    }
+}
+
 @media screen and (max-width: 360px){
 
     header#Page-Header{
         & h1{
-            font-size: 2.5em;
+            font-size: 2.5em!important;
         }
         & h2{
-            font-size: 0.9em ;
+            font-size: 0.9em !important;
         }
         & a{
-            font-size: 1.5em ;
+            font-size: 1.5em !important;
         }
+    }
+    footer#Page-Footer{
+        padding-left: 5px !important;
     }
 
     section#Intro{
@@ -248,12 +343,15 @@
             }
         }
     }
+    .bookingForm{
+        height: auto;
+    }
 }
 
 @media screen and(max-width: 300px){
     header#Page-Header{
         height: auto !important;
-        padding: 100px 0 !important;
+        padding: 50px 0 !important;
         & h1{
             font-size: 2em !important;
         }
@@ -263,11 +361,18 @@
         & a{
             font-size: 1.5em !important;
         }
+        padding-bottom: 25px !important;
     }
     .article{
         & h3{
             font-size: 1em !important;
         }
+    }
+    .formBox{
+        padding: 10px !important;
+    }
+    .formContainer .contactForm .formBox{
+        padding: 0 !important;
     }
     section#Intro{
         & a{
@@ -276,7 +381,7 @@
     }
 }
 
-@media screen and(max-width: 240px){
+@media screen and(max-width: 250px){
     header#Page-Header{
         & a{
             font-size: 1em !important;
@@ -287,11 +392,58 @@
         & a{
             display: none !important;
         }
-        & ul li.toggle{
+        & ul.default-nav li.toggle{
             width: 90vw !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex!important;
+            align-items: center!important;
+            justify-content: center!important;
         }
     }
+    .mobile-nav{
+        & li a{
+            display:flex !important;
+            justify-content: flex-end !important;
+            & span{
+                margin: 0 !important;
+                padding: 0 !important;
+                padding-right: 10px !important;
+                text-align: right !important;
+                font-size: 0.8em !important;
+            }
+        }
+    }
+}
+
+
+/*============================Height======================*/
+
+@media screen and(max-height: 1200px){
+    section{
+        height: auto !important;
+    }
+    header#Page-Header{
+        padding-bottom: 10px !important;
+    }
+}
+
+@media screen and(max-height: 750px){
+    .popup{
+        & .card-top .content .content-top h5{
+            font-size: 01em!important;
+            padding-bottom: 0!important;
+        }
+        & .card-top .content .tags tag{
+            font-size: 0.7em!important;
+        }
+        & .cardbottom button{
+            font-size: 0.7em !important;
+        }
+        & .cardbottom p{
+            font-size: 0.7em !important;
+        }
+    }
+    header{
+        height: auto !important;
+    }
+
 }

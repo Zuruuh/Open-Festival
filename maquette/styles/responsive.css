@@ -15,23 +15,63 @@
 }
 
 @media screen and (max-width: 1160px) {
-  nav ul li a {
+  nav ul.default-nav li a {
     font-size: 1.2em;
   }
 }
 
 @media screen and (max-width: 1002px) {
-  nav ul li {
+  nav ul.default-nav li {
     display: none;
   }
-  nav ul li.toggle {
-    display: inline-block;
+  nav ul.default-nav li.toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     color: #bbe1fa;
     font-size: 2em;
     cursor: pointer;
     border: 1px solid #bbe1fa;
-    padding: 5px 15px;
     border-radius: 10px;
+    z-index: 2000;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  nav ul.default-nav li.toggle .line {
+    height: 4px;
+    border-radius: 4px;
+    width: 40px;
+    background: #44acf2;
+    margin: 5px 0;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  nav ul.default-nav li.toggle.active .line {
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    background: red;
+  }
+  nav ul.default-nav li.toggle.active .line:nth-child(1) {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+            transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  nav ul.default-nav li.toggle.active .line:nth-child(2) {
+    background: #1B262C;
+  }
+  nav ul.default-nav li.toggle.active .line:nth-child(3) {
+    -webkit-transform: rotate(45deg) translate(-10px, -10px);
+            transform: rotate(45deg) translate(-10px, -10px);
   }
   section#MoviesSection {
     height: auto;
@@ -52,15 +92,47 @@
             align-items: flex-start !important;
     padding-left: 50px;
   }
+  .popup {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .popup .card-top {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .popup .card-top .content {
+    width: 100% !important;
+  }
+  .popup .card-top .content .content-top h5 {
+    font-size: 1.2em;
+  }
+  .popup .card-top .content .content-top .content-rating {
+    position: absolute !important;
+    right: 10px !important;
+    bottom: -20px !important;
+  }
+  .cardbottom {
+    height: 100% !important;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
+  }
+  .cardbottom p {
+    font-size: 0.8em;
+  }
 }
 
 @media screen and (max-width: 950px) {
   #BookingSection {
     height: auto !important;
+    padding-bottom: 0 !important;
   }
   #ContactSection {
     height: auto !important;
     padding: 100px 0 !important;
+    padding-bottom: 0 !important;
   }
   #ContactSection h2 {
     padding: 0 !important;
@@ -85,7 +157,12 @@
     -webkit-box-pack: center !important;
         -ms-flex-pack: center !important;
             justify-content: center !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
     width: 100% !important;
+    padding-bottom: 75px !important;
   }
   .formContainer .contactForm {
     width: 100% !important;
@@ -93,6 +170,10 @@
   .formContainer .contactForm .formBox {
     margin: 0 !important;
     padding: 50px !important;
+    width: 100% !important;
+  }
+  .formContainer .image {
+    height: 350px !important;
     width: 100% !important;
   }
   .formContainer img {
@@ -170,11 +251,24 @@
   section#Intro a {
     margin: 0 !important;
   }
+  .card-top {
+    -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+            align-items: flex-start !important;
+  }
 }
 
 @media screen and (max-width: 600px) {
   header#MoviesHeader h2 {
     font-size: 1em;
+  }
+  .popup {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0px 0px 0px 0px !important;
+  }
+  .cookies p {
+    font-size: 0.7em !important;
   }
 }
 
@@ -184,7 +278,8 @@
     margin: 0 !important;
   }
   header#Page-Header {
-    height: 60vh;
+    height: auto !important;
+    padding-bottom: 20px;
   }
   header#Page-Header h1 {
     font-size: 3em;
@@ -204,15 +299,30 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .cookies {
+    padding: 10px 10px;
+  }
+  .cookies p {
+    font-size: 0.5em !important;
+  }
+  .cookies button {
+    font-size: 0.8em !important;
+  }
+}
+
 @media screen and (max-width: 360px) {
   header#Page-Header h1 {
-    font-size: 2.5em;
+    font-size: 2.5em !important;
   }
   header#Page-Header h2 {
-    font-size: 0.9em;
+    font-size: 0.9em !important;
   }
   header#Page-Header a {
-    font-size: 1.5em;
+    font-size: 1.5em !important;
+  }
+  footer#Page-Footer {
+    padding-left: 5px !important;
   }
   section#Intro h2 {
     font-size: 1.4em !important;
@@ -230,12 +340,16 @@
   section#MoviesSection .movies-container .movie .thumbnail {
     width: 95%;
   }
+  .bookingForm {
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 300px) {
   header#Page-Header {
     height: auto !important;
-    padding: 100px 0 !important;
+    padding: 50px 0 !important;
+    padding-bottom: 25px !important;
   }
   header#Page-Header h1 {
     font-size: 2em !important;
@@ -249,12 +363,18 @@
   .article h3 {
     font-size: 1em !important;
   }
+  .formBox {
+    padding: 10px !important;
+  }
+  .formContainer .contactForm .formBox {
+    padding: 0 !important;
+  }
   section#Intro a {
     font-size: 1em !important;
   }
 }
 
-@media screen and (max-width: 240px) {
+@media screen and (max-width: 250px) {
   header#Page-Header a {
     font-size: 1em !important;
   }
@@ -266,17 +386,61 @@
   nav a {
     display: none !important;
   }
-  nav ul li.toggle {
+  nav ul.default-nav li.toggle {
     width: 90vw !important;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  .mobile-nav li a {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: end !important;
+        -ms-flex-pack: end !important;
+            justify-content: flex-end !important;
+  }
+  .mobile-nav li a span {
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-right: 10px !important;
+    text-align: right !important;
+    font-size: 0.8em !important;
+  }
+}
+
+/*============================Height======================*/
+@media screen and (max-height: 1200px) {
+  section {
+    height: auto !important;
+  }
+  header#Page-Header {
+    padding-bottom: 10px !important;
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .popup .card-top .content .content-top h5 {
+    font-size: 1em !important;
+    padding-bottom: 0 !important;
+  }
+  .popup .card-top .content .tags tag {
+    font-size: 0.7em !important;
+  }
+  .popup .cardbottom button {
+    font-size: 0.7em !important;
+  }
+  .popup .cardbottom p {
+    font-size: 0.7em !important;
+  }
+  header {
+    height: auto !important;
   }
 }
 /*# sourceMappingURL=responsive.css.map */

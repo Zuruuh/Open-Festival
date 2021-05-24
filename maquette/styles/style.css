@@ -5,12 +5,18 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 html {
   width: 100vw;
+  height: auto;
   overflow-x: hidden;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
 }
 
 #Home {
@@ -18,9 +24,13 @@ html {
   width: 100%;
   background: transparent;
   position: absolute;
-  margin-top: -100px;
   top: 0;
-  left: 0;
+  margin-top: -98px;
+  scroll-behavior: smooth;
+}
+
+.scroll-lock {
+  overflow: hidden;
 }
 
 section {
@@ -48,11 +58,6 @@ body {
   overflow-x: hidden;
 }
 
-body.scroll-lock {
-  overflow: hidden !important;
-  height: 100vh;
-}
-
 h2.section-title {
   color: #3282B8;
   font-size: 3em;
@@ -61,7 +66,8 @@ h2.section-title {
   padding: 20px 0;
 }
 
-/*===============================Navigation================================*/
+/*
+! ===============================Navigation================================*/
 nav {
   width: 100%;
   height: 100px;
@@ -99,36 +105,36 @@ nav .nav-logo:hover {
           transform: scale(1.1);
 }
 
-nav ul {
+nav ul.default-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-nav ul li {
+nav ul.default-nav li {
   margin: 0px 20px;
   list-style-type: none;
 }
 
-nav ul li a {
+nav ul.default-nav li a {
   text-decoration: none;
   color: #bbe1fa;
-  font-size: 1.5em;
+  font-size: 1.45em;
   position: relative;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
   cursor: pointer;
 }
 
-nav ul li a.active {
+nav ul.default-nav li a.active {
   color: #5cb7f3;
 }
 
-nav ul li a:hover {
+nav ul.default-nav li a:hover {
   color: #3282b8;
 }
 
-nav ul li a::before {
+nav ul.default-nav li a::before {
   content: "";
   position: absolute;
   width: 0;
@@ -141,12 +147,12 @@ nav ul li a::before {
   transition: all 0.2s ease-in-out;
 }
 
-nav ul li a:hover::before {
+nav ul.default-nav li a:hover::before {
   visibility: visible;
   width: 100%;
 }
 
-nav ul li a::after {
+nav ul.default-nav li a::after {
   content: "";
   position: absolute;
   width: 0;
@@ -159,14 +165,98 @@ nav ul li a::after {
   transition: all 0.4s ease-in-out;
 }
 
-nav ul li a:hover::after {
+nav ul.default-nav li a:hover::after {
   visibility: visible;
   width: 100%;
 }
 
-nav ul li.toggle {
-  cursor: default;
-  display: none;
+.mobile-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  position: absolute;
+  height: 100vh;
+  width: 250px;
+  z-index: 1000;
+  top: 100px;
+  right: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+}
+
+.mobile-nav.active {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+}
+
+.mobile-nav.active li {
+  position: relative;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.mobile-nav li {
+  height: calc(20vh - 20px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style-type: none;
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+}
+
+.mobile-nav li a {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  color: #eee;
+  text-decoration: none;
+  font-size: 1.5em;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-transition: background 1s ease, border-color 1s ease;
+  transition: background 1s ease, border-color 1s ease;
+  background: #2e414c;
+}
+
+.mobile-nav li a:hover {
+  -webkit-transition: background 0.1s ease, border-color 0.1s ease;
+  transition: background 0.1s ease, border-color 0.1s ease;
+  background: #3282b8;
+  border-color: #3282b8;
+}
+
+.mobile-nav li a span {
+  border: 0;
+  color: #eee;
+  text-align: right;
+  padding-left: 20px;
 }
 
 /*===============================Header====================================*/
@@ -284,11 +374,11 @@ section#Intro a:hover {
 
 /*===============================Section-News==============================*/
 #News {
-  height: 0;
+  height: 0px;
   width: 100%;
   background: transparent;
-  position: absolute;
-  margin-top: -100px;
+  position: relative;
+  padding-top: -100px;
 }
 
 section#NewsSection {
@@ -555,6 +645,7 @@ section#BookingSection {
   height: 90vh;
   width: 100%;
   background: #25343C;
+  padding-bottom: 100px;
 }
 
 section#BookingSection h2 {
@@ -639,6 +730,7 @@ section#BookingSection .formContainer .bookingForm .formBox .inputBox input::pla
 
 section#BookingSection .formContainer .bookingForm .formBox .inputBox input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 section#BookingSection .formContainer .bookingForm .formBox .inputBox input[type="submit"] {
@@ -678,16 +770,18 @@ section#BookingSection .formContainer img {
   height: 700px;
 }
 
-/*===============================Section-Contact===========================*/
+/**===============================Section-Contact===========================**/
 #Contact {
   height: 0;
   width: 100%;
   background: transparent;
   position: absolute;
-  margin-top: -100px;
+  top: 0;
+  margin-top: -98px;
 }
 
 section#ContactSection {
+  position: relative;
   height: 90vh;
   width: 100%;
   background: #11181C;
@@ -704,6 +798,7 @@ section#ContactSection {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 100px;
 }
 
 section#ContactSection h2 {
@@ -721,9 +816,10 @@ section#ContactSection .formContainer {
           justify-content: center;
 }
 
-section#ContactSection .formContainer img {
+section#ContactSection .formContainer .image {
   width: 450px;
-  height: 95%;
+  min-height: 95%;
+  background: url("../resources/map.png") no-repeat center center/cover;
 }
 
 section#ContactSection .formContainer .contactForm {
@@ -736,10 +832,10 @@ section#ContactSection .formContainer .contactForm {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   width: 700px;
 }
 
@@ -1071,7 +1167,7 @@ footer#OpenClassrooms p a {
   height: 75px;
   width: 100%;
   z-index: 200;
-  background: #11181c;
+  background: #080B0C;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1079,7 +1175,6 @@ footer#OpenClassrooms p a {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 25px 0 50px;
-  display: none;
 }
 
 .cookies p {
@@ -1132,11 +1227,28 @@ footer#OpenClassrooms p a {
   position: relative;
   border-radius: 25px;
   padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.background .popup::-webkit-scrollbar {
+  display: none;
 }
 
 .background .popup .card-top {
   width: 100%;
-  height: 40%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1150,7 +1262,7 @@ footer#OpenClassrooms p a {
 }
 
 .background .popup .card-top .imageBox {
-  width: 33%;
+  width: 40%;
   height: 100%;
   margin-right: 15px;
 }
@@ -1175,7 +1287,7 @@ footer#OpenClassrooms p a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 67%;
+  width: 60%;
   height: 100%;
   padding-top: 20px;
 }
@@ -1192,30 +1304,79 @@ footer#OpenClassrooms p a {
 }
 
 .background .popup .card-top .content-top h5 {
-  font-size: 2em;
+  font-size: 1.5em;
+  padding-bottom: 20px;
+  width: 280px;
+}
+
+.background .popup .card-top .content-rating {
+  height: 100%;
+  width: auto;
+  position: relative;
 }
 
 .background .popup .card-top .content-rating svg {
-  position: relative;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
 .background .popup .card-top .content-rating svg circle {
   width: 100%;
   height: 100%;
-  fill: none;
+  fill: transparent;
   stroke-width: 10;
   stroke: rgba(0, 0, 0, 0.05);
-  -webkit-transform: translate(5px, 5px);
-          transform: translate(5px, 5px);
   stroke-linecap: round;
+  -webkit-transform: translate(10px, 10px);
+          transform: translate(10px, 10px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.background .popup .card-top .content-rating svg circle:nth-child(2) {
-  stroke: #f00;
-  stroke-dasharray: 440px;
-  stroke-dashoffset: 40px;
+.background .popup .card-top .content-rating .rating-number {
+  position: absolute;
+  top: 34px;
+  right: 17px;
+  font-weight: 900;
+  font-size: 1.2em;
+}
+
+.background .popup .card-top .content-rating .rating-number sub {
+  top: 38px;
+}
+
+.background .popup .card-top .content .tags {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.background .popup .card-top .content .tags .tag {
+  margin: 2px 5px;
+  background: #74C1F5;
+  padding: 3px 10px;
+  border-radius: 15px;
+  width: auto;
+  height: auto;
 }
 
 .background .popup .cardbottom {
@@ -1234,5 +1395,25 @@ footer#OpenClassrooms p a {
           flex-direction: column;
   height: 60%;
   width: 100%;
+}
+
+.background .popup .cardbottom p {
+  margin-top: 15px;
+  padding: 0 10px;
+}
+
+.background .popup .cardbottom button {
+  border: 0;
+  font-size: 1.5em;
+  background: #74C1F5;
+  padding: 10px 25px;
+  border-radius: 35px;
+  color: #111;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.background .popup .cardbottom button:hover {
+  background: #8cccf7;
 }
 /*# sourceMappingURL=style.css.map */

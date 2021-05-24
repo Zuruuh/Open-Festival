@@ -44,6 +44,9 @@ var date = 1;
 var i = 0;
 var api_data;
 var genres_data;
+var scale = function (num, in_min, in_max, out_min, out_max) {
+    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+};
 function getGenres(url) {
     return __awaiter(this, void 0, void 0, function () {
         var res, data;
@@ -74,7 +77,6 @@ function getMovies(url) {
                 case 2:
                     data = _a.sent();
                     api_data = data.results;
-                    console.log(api_data);
                     selectContent();
                     return [2 /*return*/];
             }
@@ -119,8 +121,11 @@ function updateContent(array, idx) {
     imgBox.querySelector('.movie-desc').innerHTML = "";
     var owtitle = document.createElement('h5');
     var owdesc = document.createElement('p');
+    var overvieww = array.overview;
+    if (overvieww.length > 400)
+        overvieww = overvieww.slice(0, 400) + " ...";
     owtitle.innerText = array.title;
-    owdesc.innerText = array.overview;
+    owdesc.innerText = overvieww;
     var button = moviesElements[i].querySelector('.movie-info-btn');
     button.setAttribute("film", "");
     button.setAttribute('film', "" + (i - 1 + idx));
@@ -129,46 +134,58 @@ function updateContent(array, idx) {
     var movieTitle = moviesElements[i].querySelector('.movie-title');
     movieTitle.innerText = array.title;
     var releaseDate = array.release_date.split("-");
-    switch (releaseDate[1]) {
+    var finalDate = (getDate(releaseDate));
+    moviesElements[i].querySelector('.movie-release').innerHTML = "\n    <i class=\"fas fa-calendar\"></i>\n    " + finalDate;
+    i++;
+}
+function getDate(date) {
+    var day = date[2];
+    var dayArr = day.split('');
+    if (dayArr[0] == "0") {
+        day = dayArr[1];
+    }
+    var month = date[1];
+    var year = date[0];
+    switch (month) {
         case "01":
-            releaseDate[1] = " Janvier ";
+            month = " Janvier ";
             break;
         case "02":
-            releaseDate[1] = " Février ";
+            month = " Février ";
             break;
         case "03":
-            releaseDate[1] = " Mars ";
+            month = " Mars ";
             break;
         case "04":
-            releaseDate[1] = " Avril ";
+            month = " Avril ";
             break;
         case "05":
-            releaseDate[1] = " Mai ";
+            month = " Mai ";
             break;
         case "06":
-            releaseDate[1] = " Juin ";
+            month = " Juin ";
             break;
         case "07":
-            releaseDate[1] = " Juillet ";
+            month = " Juillet ";
             break;
         case "08":
-            releaseDate[1] = " Août ";
+            month = " Août ";
             break;
         case "09":
-            releaseDate[1] = " Septembre ";
+            month = " Septembre ";
             break;
         case "10":
-            releaseDate[1] = " Octobre ";
+            month = " Octobre ";
             break;
         case "11":
-            releaseDate[1] = " Novembre ";
+            month = " Novembre ";
             break;
         case "12":
-            releaseDate[1] = " Décembre ";
+            month = " Décembre ";
             break;
+        default:
     }
-    moviesElements[i].querySelector('.movie-release').innerHTML = "\n    <i class=\"fas fa-calendar\"></i>\n    " + (releaseDate[2] + releaseDate[1] + " " + releaseDate[0]);
-    i++;
+    return "" + day + month + year;
 }
 function initSelect(data) {
     var select = document.getElementById('Seances');
@@ -176,7 +193,7 @@ function initSelect(data) {
         "\n    <option value=\"/\">--Choisissez une S\u00E9ance--</option>\n\n    <option disabled value=\"/\">--5 Ao\u00FBt--</option>\n    " + optionBuilder(data[0].title, data[1].title, data[2].title) + "\n    <option disabled value=\"/\">--6 Ao\u00FBt--</option>\n    " + optionBuilder(data[3].title, data[4].title, data[5].title) + "\n    <option disabled value=\"/\">--7 Ao\u00FBt--</option>\n    " + optionBuilder(data[6].title, data[7].title, data[8].title) + "\n    <option disabled value=\"/\">--8 Ao\u00FBt--</option>\n    " + optionBuilder(data[9].title, data[10].title, data[11].title) + "\n    ";
 }
 function optionBuilder(title1, title2, title3) {
-    return "\n    <option value=\"" + title1 + "\">18H-20H \u2794 " + title1 + "</option>\n    <option value=\"" + title2 + "\">20H-22H \u2794 " + title2 + "</option>\n    <option value=\"" + title3 + "\">22-Minuit \u2794 " + title3 + "</option>\n    ";
+    return "\n    <option value=\"" + title1 + "\">18H-20H \u2794 " + title1 + "</option>\n    <option value=\"" + title2 + "\">20H-22H \u2794 " + title2 + "</option>\n    <option value=\"" + title3 + "\">22H-Minuit \u2794 " + title3 + "</option>\n    ";
 }
 setInterval(function () {
     var scrollButton = document.querySelector('.scroll-top');
@@ -240,10 +257,51 @@ var openFilmPopup = function (_) {
     background.classList.add("background");
     movieCard.classList.add("popup");
     document.body.classList.add('scroll-lock');
-    console.log(background);
+    movieCard.innerHTML =
+        "\n    <div class=\"card-top\">\n        <div class=\"imageBox\">\n            <img class=\"content-thumbnail\" src=\"" + (IMAGE_PATH + api_data[_].poster_path) + "\"/>\n        </div>\n        <div class=\"content\">\n            <div class=\"content-top\">\n                <h5>" + api_data[_].title + "</h5>\n                <div class=\"content-rating\">\n                    <svg>\n                    <circle cx=\"40\" cy=\"40\" r=\"40\"></circle>\n                        <circle cx=\"40\" cy=\"40\" r=\"40\" class=\"circle\" style=\"\n                        stroke-dashoffset:" + scale(api_data[_].vote_average, 0, 10, 500, 250) + ";\n                        stroke:" + getColor(api_data[_].vote_average) + ";\n                        stroke-dasharray: 500;\n                        \">\n                        </circle>\n                    </svg>\n                    <p class=\"rating-number\">\n                    " + api_data[_].vote_average + "\n                    <sub style=\"\n                            font-size: 0.6em;\n                            font-weight: 400;\n                            \">/10</sub></p>\n                    </p>\n                </div>\n            </div>\n        <p class=\"release-date\">\n                        Parution: " + (getDate(api_data[_].release_date.split('-'))) + "\n        </p>\n        <div class=\"tags\">\n            " + returnGenres(genres) + "\n        </div>\n    </div>\n</div>\n    <div class=\"cardbottom\">\n        <p>\n                " + api_data[_].overview + "  \n        </p>\n        <button class=\"popup-close-btn\">D'accord</button>\n    </div>\n    ";
     document.body.appendChild(background);
     background.appendChild(movieCard);
+    initEvents(background);
 };
 moviesInfoButtons.forEach(function (button) {
     button.addEventListener("click", function (e) { return openFilmPopup(button.getAttribute('film')); });
+});
+function initEvents(background) {
+    var button = document.querySelector('.popup-close-btn');
+    button.addEventListener('click', function (e) {
+        closePopup(e);
+        document.body.classList.remove('scroll-lock');
+    });
+    background.addEventListener('click', function (e) { return closePopup(e); });
+    var closePopup = function (_) {
+        if (_.target == background || _.target == button) {
+            background.remove();
+            document.body.classList.remove('scroll-lock');
+        }
+    };
+}
+function getColor(note) {
+    if (note <= 4)
+        return '#EA2620 ';
+    else if (note <= 6)
+        return '#EAE120';
+    else if (note <= 8)
+        return '#91EA20';
+    else if (note <= 10)
+        return '#38EA20';
+}
+function returnGenres(array) {
+    var final = "";
+    array.forEach(function (element) {
+        final +=
+            "\n        <div class=\"tag\">" + element + "</div>\n        ";
+    });
+    return final;
+}
+var links = document.querySelectorAll('.mobile-nav li');
+links.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        document.querySelector('.mobile-nav').classList.toggle('active');
+        document.querySelector('.toggle').classList.toggle('active');
+    });
 });
