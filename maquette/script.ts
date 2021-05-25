@@ -244,7 +244,7 @@ const openFilmPopup = _ => {
     `
     <div class="card-top">
         <div class="imageBox">
-            <img class="content-thumbnail" src="${IMAGE_PATH + api_data[_].poster_path}"/>
+            <img class="content-thumbnail" src="${IMAGE_PATH + api_data[_].poster_path}" alt="${api_data[_].title}"/>
         </div>
         <div class="content">
             <div class="content-top">
