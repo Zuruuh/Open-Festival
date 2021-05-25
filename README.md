@@ -1,4 +1,4 @@
-# **OPENCLASSROOMS** - Projet 3 du [parcours de Développeur D'applications PHP/Symfony](https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony) | [Site Fonctionnel](https://younes-ziadi.com/festivaldefilms/)
+# **OPENCLASSROOMS** - Projet 3 du [Parcours de Développeur d'Applications PHP/Symfony](https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony) | [Site Fonctionnel](https://younes-ziadi.com/festivaldefilms/)
 
 ## Analysez les besoins de votre client pour son festival de films
 
